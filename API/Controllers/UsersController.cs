@@ -5,6 +5,8 @@ using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+
 
 namespace API.Controllers
 {
@@ -13,7 +15,7 @@ namespace API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly DataContext _context;
-        public UsersController(DataContext context)
+        public UsersController (DataContext context)
         {
             _context = context;
 
@@ -22,6 +24,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
+            Console.WriteLine("test");
             return await _context.Users.ToListAsync();
             
         }
